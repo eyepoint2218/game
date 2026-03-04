@@ -9,7 +9,14 @@ def play_game() -> None:
     print("1부터 100 사이의 숫자를 맞혀보세요.")
 
     while True:
-        user_input = input("숫자를 입력하세요: ").strip()
+        try:
+            user_input = input("숫자를 입력하세요: ").strip()
+        except EOFError:
+            print("\n입력이 종료되어 게임을 종료합니다.")
+            break
+        except KeyboardInterrupt:
+            print("\n게임을 종료합니다.")
+            break
 
         if not user_input.isdigit():
             print("숫자만 입력해주세요.")
